@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCvSharpYolo3", "OpenCvSharpYolo3\OpenCvSharpYolo3.csproj", "{ACA08E31-479A-440D-98BC-D0800C2FA04D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACA08E31-479A-440D-98BC-D0800C2FA04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA08E31-479A-440D-98BC-D0800C2FA04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA08E31-479A-440D-98BC-D0800C2FA04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA08E31-479A-440D-98BC-D0800C2FA04D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EC4173F-86FE-431E-8151-21E5561F8035}
+	EndGlobalSection
+EndGlobal
