@@ -20,6 +20,7 @@ namespace OpenCvSharpYolo3
     /// </summary>
     class Program
     {
+        #region const/readonly
         //YOLOv3
         //https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg
         private const string Cfg = "yolov3.cfg";
@@ -38,24 +39,28 @@ namespace OpenCvSharpYolo3
         
         //get labels from coco.names
         private static readonly string[] Labels = File.ReadAllLines(Path.Combine(Location, Names)).ToArray();
+        #endregion
 
         static void Main()
         {
             #region parameter
-            var image = Path.Combine(Location, "rebun.jpeg");
+            var image = Path.Combine(Location, "kite.jpg");
             var cfg = Path.Combine(Location, Cfg);
             var model = Path.Combine(Location, Weight);
-            var threshold = 0.5f; //for confidence 
-            var nmsThreshold = 0.3f;
+            const float threshold = 0.5f;       //for confidence 
+            const float nmsThreshold = 0.3f;    //threshold for nms
             #endregion
 
             //get image
-            var org = Cv2.ImRead(image);
+            var org = new Mat(image);
 
             //setting blob, size can be:320/416/608
+            //opencv blob setting can check here https://github.com/opencv/opencv/tree/master/samples/dnn#object-detection
             var blob = CvDnn.BlobFromImage(org, 1.0 / 255, new Size(416, 416), new Scalar(), true, false);
+
             //load model and config, if you got error: "separator_index < line.size()", check your cfg file, must be something wrong.
             var net = CvDnn.ReadNetFromDarknet(cfg, model);
+            #region set preferable
             net.SetPreferableBackend(3);
             /*
             0:DNN_BACKEND_DEFAULT 
@@ -71,6 +76,7 @@ namespace OpenCvSharpYolo3
             3:DNN_TARGET_MYRIAD 
             4:DNN_TARGET_FPGA 
              */
+            #endregion
 
             //input data
             net.SetInput(blob);
@@ -78,7 +84,7 @@ namespace OpenCvSharpYolo3
             //get output layer name
             var outNames = net.GetUnconnectedOutLayersNames();
             //create mats for output layer
-            Mat[] outs = outNames.Select(_ => new Mat()).ToArray();
+            var outs = outNames.Select(_ => new Mat()).ToArray();
 
             #region forward model
             Stopwatch sw = new Stopwatch();
@@ -97,7 +103,6 @@ namespace OpenCvSharpYolo3
             {
                 Cv2.WaitKey();
             }
-
         }
 
         /// <summary>
@@ -106,8 +111,8 @@ namespace OpenCvSharpYolo3
         /// <param name="output"></param>
         /// <param name="image"></param>
         /// <param name="threshold"></param>
-        /// <param name="nmsThreshold"></param>
-        /// <param name="nms"></param>
+        /// <param name="nmsThreshold">threshold for nms</param>
+        /// <param name="nms">Enable Non-maximum suppression or not</param>
         private static void GetResult(IEnumerable<Mat> output, Mat image, float threshold,float nmsThreshold, bool nms=true)
         {
             //for nms
@@ -164,7 +169,7 @@ namespace OpenCvSharpYolo3
 
             if (!nms) return;
             
-            //using non-maximum suppression to reduct overlapping low confidence box
+            //using non-maximum suppression to reduce overlapping low confidence box
             CvDnn.NMSBoxes(boxes, confidences, threshold, nmsThreshold, out int[] indices);
 
             Console.WriteLine($"NMSBoxes drop {confidences.Count - indices.Length} overlapping result.");
