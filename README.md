@@ -1,14 +1,23 @@
-# YOLO3 With OpenCvSharp4
-![img](https://i.imgur.com/uusNnEN.png)
+# YOLOv3 With OpenCvSharp4
 
-This is a demo of implement pjreddie's [YOLO3](https://pjreddie.com/darknet/yolo/) with shimat's [OpenCvSharp4](https://github.com/shimat/opencvsharp) using C#.
+This is a fork of a demo of implement pjreddie's [YOLO3](https://pjreddie.com/darknet/yolo/) with shimat's [OpenCvSharp4](https://github.com/shimat/opencvsharp) using C#.
 
-more detail please check blog artile : [[C#] YOLO3 with OpenCvSharp4](https://www.died.tw/2019/01/c-yolo3-with-opencvsharp4.html)
+more detail please check the original repository
 
-## Result
+The Yolov3 model used in this branch is trained on 2965 images for 7000 iterations of plant roots and can detect 3 classes. Primary, Lateral and Seed.
 
-![img](https://i.imgur.com/lqQ5iVz.png)
+Image 2 
 
-![img](https://i.imgur.com/5UG8BBX.png)
+![img](OpenCvSharpYolo3/Content/2.png)
 
-![img](https://i.imgur.com/XQ75ClR.jpg)
+Results for Image 2
+
+![img](OpenCvSharpYolo3/Content/Resultfor_2.jpeg)
+
+Image 3
+
+![img](OpenCvSharpYolo3/Content/3.png)
+
+Results for Image 3
+
+![img](OpenCvSharpYolo3/Content/Resultfor_3.png)
