@@ -1,4 +1,4 @@
-# YOLO3 With OpenCvSharp4
+# YOLOv3 With OpenCvSharp4
 
 This is a fork of a demo of implement pjreddie's [YOLO3](https://pjreddie.com/darknet/yolo/) with shimat's [OpenCvSharp4](https://github.com/shimat/opencvsharp) using C#.
 
