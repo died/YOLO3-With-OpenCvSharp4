@@ -29,11 +29,11 @@ namespace OpenCvSharpYolo3
         private const string Weight = "yolov3.weights";
         
         //https://github.com/pjreddie/darknet/blob/master/data/coco.names
-        private const string Names = "coco.names";
+        private const string Names = "obj.names";
 
         //file location
-        private const string Location = "../../Content/";
-        
+       
+        private const string Location = @"..\..\Content\";
         //random assign color to each label
         private static readonly Scalar[] Colors = Enumerable.Repeat(false, 80).Select(x => Scalar.RandomColor()).ToArray();
         
@@ -43,8 +43,12 @@ namespace OpenCvSharpYolo3
 
         static void Main()
         {
+
             #region parameter
-            var image = Path.Combine(Location, "kite.jpg");
+            Console.Write("Enter name and suffix of image in content folder, e.g 1.png, : ");
+            var img = @Console.ReadLine();
+
+            var image = Path.Combine(Location, img);
             var cfg = Path.Combine(Location, Cfg);
             var model = Path.Combine(Location, Weight);
             const float threshold = 0.5f;       //for confidence 
