@@ -7,8 +7,10 @@ more detail please check blog artile : [[C#] YOLO3 with OpenCvSharp4](https://ww
 
 ## Result
 
-![img](https://i.imgur.com/lqQ5iVz.png)
+![img](OpenCvSharpYolo3/Content/2.png)
 
-![img](https://i.imgur.com/5UG8BBX.png)
+![img](OpenCvSharpYolo3/Content/Resultfor_2.jpeg)
 
-![img](https://i.imgur.com/XQ75ClR.jpg)
+![img](OpenCvSharpYolo3/Content/3.png)
+
+![img](OpenCvSharpYolo3/Content/Resultfor_3.png)
