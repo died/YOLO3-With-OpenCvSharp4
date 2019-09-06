@@ -51,7 +51,7 @@ namespace OpenCvSharpYolo3
             var image = Path.Combine(Location, img);
             var cfg = Path.Combine(Location, Cfg);
             var model = Path.Combine(Location, Weight);
-            const float threshold = 0.5f;       //for confidence 
+            const float threshold = 0.3f;       //for confidence 
             const float nmsThreshold = 0.3f;    //threshold for nms
             #endregion
 
@@ -103,7 +103,8 @@ namespace OpenCvSharpYolo3
             //get result from all output
             GetResult(outs, org, threshold, nmsThreshold);
 
-            using (new Window("died.tw", org))
+            Cv2.ImWrite(Location + "Resultfor_"+img, org);
+            using (new Window("Resultfor_" + img, org))
             {
                 Cv2.WaitKey();
             }
@@ -183,7 +184,7 @@ namespace OpenCvSharpYolo3
                 var box = boxes[i];
                 Draw(image, classIds[i], confidences[i], probabilities[i], box.X, box.Y, box.Width, box.Height);
             }
-            
+           
         }
             
         /// <summary>
@@ -210,6 +211,7 @@ namespace OpenCvSharpYolo3
                 new Size(textSize.Width, textSize.Height + baseline)), Colors[classes], Cv2.FILLED);
             var textColor = Cv2.Mean(Colors[classes]).Val0 < 70 ? Scalar.White : Scalar.Black;
             Cv2.PutText(image, label, new Point(x1, centerY - height / 2 - baseline), HersheyFonts.HersheyTriplex, 0.5, textColor);
+          
         }
     }
 }
